@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidSampleCode</string>
+
+
+    <string name="add">add</string>
+    <string name="getbooks">getBooks</string>
+
+
+</resources>
