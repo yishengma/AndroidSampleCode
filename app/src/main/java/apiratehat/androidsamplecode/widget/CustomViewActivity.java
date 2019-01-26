@@ -13,14 +13,13 @@ public class CustomViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
-
-        ArrayList<PieView.PieData> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            PieView.PieData pieData = new PieView.PieData(String.valueOf(i),i+1);
-            data.add(pieData);
-        }
-
-        ((PieView)findViewById(R.id.pieView)).setData(data);
-
+//-------------------- 扇形图-----------------------
+//        ArrayList<PieView.PieData> data = new ArrayList<>();
+//        for (int i = 0; i < 10; i++) {
+//            PieView.PieData pieData = new PieView.PieData(String.valueOf(i),i+1);
+//            data.add(pieData);
+//        }
+//        ((PieView)findViewById(R.id.pieView)).setData(data);
+//-------------------- 扇形图-----------------------
     }
 }
