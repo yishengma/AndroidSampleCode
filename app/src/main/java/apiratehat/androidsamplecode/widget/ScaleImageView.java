@@ -11,9 +11,11 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver;
 
 import java.net.Socket;
@@ -42,8 +44,25 @@ public class ScaleImageView extends android.support.v7.widget.AppCompatImageView
     //多点触控
     private ScaleGestureDetector mScaleGestureDetector;
 
+
+    //--------自由移动--------
+    private int mLastPointerCount;
+
+    private float mLastX;
+    private float mLastY;
+
+    private int mTouchSlop;
+    private boolean isCanDrag;
+
+    private boolean isCheckLeftAndRight;
+    private boolean isCheckTopAndBottom;
+
     private Matrix mScaleMatrix;
 
+    private boolean isAutoScale;
+
+    //-----------双击放大缩小------------
+    private GestureDetector mGestureDetector;
 
     public ScaleImageView(Context context) {
         this(context, null);
@@ -65,6 +84,33 @@ public class ScaleImageView extends android.support.v7.widget.AppCompatImageView
         //注意设置这个
         setOnTouchListener(this);
         mScaleGestureDetector = new ScaleGestureDetector(getContext(), this);
+
+        mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+
+        mGestureDetector = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                float x = e.getX();
+                float y = e.getY();
+                if (isAutoScale) {
+                    return true;
+                }
+                if (getScale() < mMinScale) {
+//                    mScaleMatrix.postScale(mMinScale/getScale(),mMinScale/getScale(),x,y);
+//                    setImageMatrix(mScaleMatrix);
+                    postDelayed(new AutoScaleRunnable(mMinScale, x, y), 16);
+                    isAutoScale = true;
+                } else {
+//                    mScaleMatrix.postScale(mInitScale / getScale(), mInitScale / getScale(), x, y);
+//                    setImageMatrix(mScaleMatrix);
+                    postDelayed(new AutoScaleRunnable(mInitScale, x, y), 16);
+                    isAutoScale = true;
+                }
+
+
+                return super.onDoubleTap(e);
+            }
+        });
 
     }
 
@@ -176,66 +222,70 @@ public class ScaleImageView extends android.support.v7.widget.AppCompatImageView
 
     /**
      * 获取改变后的图片后的大小，高宽
+     *
      * @return
      */
-    private RectF getMatirxRectF(){
+    private RectF getMatrixRectF() {
         Matrix matrix = mScaleMatrix;
         RectF rectF = new RectF();
 
-       Drawable d = getDrawable();
+        Drawable d = getDrawable();
 
-       if (d != null){
-           rectF.set(0,0,d.getIntrinsicWidth(),d.getIntrinsicHeight());
-           // TODO: 2019/1/26 这个是啥？
-           matrix.mapRect(rectF);
-       }
+        if (d != null) {
+            rectF.set(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
+            // TODO: 2019/1/26 这个是啥？
+            matrix.mapRect(rectF);
+        }
 
-       return rectF;
+        return rectF;
     }
 
-    private void checkBorderAndCenterWhenScale(){
-         RectF rectF = getMatirxRectF();
+    /**
+     * 缩放的时候检测，边界和中心
+     */
+    private void checkBorderAndCenterWhenScale() {
+        RectF rectF = getMatrixRectF();
 
 
-         float deltaX = 0;
+        float deltaX = 0;
         float deltaY = 0;
 
-         int width = getWidth();
-         int height = getHeight();
+        int width = getWidth();
+        int height = getHeight();
 
 
-         //平移至旁边没有空白
-         if (rectF.width() >= width){
-             if (rectF.left > 0){
-                 deltaX = - rectF.left;
-             }
+        //平移至旁边没有空白
+        if (rectF.width() >= width) {
+            if (rectF.left > 0) {
+                deltaX = -rectF.left;
+            }
 
-             if (rectF.right < width){
-                 deltaX = width - rectF.right;
-             }
-         }
+            if (rectF.right < width) {
+                deltaX = width - rectF.right;
+            }
+        }
 
-         if (rectF.height() >= height){
-             if (rectF.top > 0){
-                 deltaY = -rectF.top;
-             }
+        if (rectF.height() >= height) {
+            if (rectF.top > 0) {
+                deltaY = -rectF.top;
+            }
 
-             if (rectF.bottom < height){
-                 deltaY = height - rectF.bottom;
-             }
+            if (rectF.bottom < height) {
+                deltaY = height - rectF.bottom;
+            }
 
 
-         }
+        }
 
-         if (rectF.width() < width){
-             deltaX = width/2f + rectF.width()/2f - rectF.right;
-         }
+        if (rectF.width() < width) {
+            deltaX = width / 2f + rectF.width() / 2f - rectF.right;
+        }
 
-         if (rectF.height() < height){
-             deltaY = height/2f + rectF.height()/2f- rectF.bottom;
-         }
+        if (rectF.height() < height) {
+            deltaY = height / 2f + rectF.height() / 2f - rectF.bottom;
+        }
 
-         mScaleMatrix.postTranslate(deltaX,deltaY);
+        mScaleMatrix.postTranslate(deltaX, deltaY);
 
 
     }
@@ -253,9 +303,160 @@ public class ScaleImageView extends android.support.v7.widget.AppCompatImageView
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
+        if (mGestureDetector.onTouchEvent(event)) {
+            return true;
+        }
+
         mScaleGestureDetector.onTouchEvent(event);
+
+        float x = event.getX();
+        float y = event.getY();
+        //多点触控的数量
+        int pointerCount = event.getPointerCount();
+
+        for (int i = 0; i < pointerCount; i++) {
+            x += event.getX(i);
+            y += event.getY(i);
+        }
+
+        x /= pointerCount;
+        y /= pointerCount;
+        if (mLastPointerCount != pointerCount) {
+            mLastX = x;
+            mLastY = y;
+
+        }
+
+        mLastPointerCount = pointerCount;
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                float dx = x - mLastX;
+                float dy = y - mLastY;
+
+                if (!isCanDrag) {
+                    isCanDrag = isMoveAction(dx, dy);
+                }
+
+                if (isCanDrag) {
+                    RectF rectF = getMatrixRectF();
+                    isCheckLeftAndRight = isCheckTopAndBottom = true;
+                    if (getDrawable() != null) {
+                        // 宽高比较小的时候不移动
+                        if (rectF.width() < getWidth()) {
+                            dx = 0;
+                            isCheckLeftAndRight = false;
+                        }
+
+                        if (rectF.height() < getHeight()) {
+                            dy = 0;
+                            isCheckTopAndBottom = false;
+                        }
+                    }
+                }
+
+
+                mScaleMatrix.postTranslate(dx, dy);
+                checkBorderWhenTranslate();
+                setImageMatrix(mScaleMatrix);
+
+                mLastX = x;
+                mLastY = y;
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                mLastPointerCount = 0;
+                break;
+
+        }
+        //
         //返回 true
         return true;
+    }
+
+    /**
+     * 平移的时候检测白边
+     */
+    private void checkBorderWhenTranslate() {
+        RectF rectF = getMatrixRectF();
+
+
+        float deltaX = 0;
+        float deltaY = 0;
+
+        int width = getWidth();
+        int height = getHeight();
+
+
+        //平移至旁边没有空白
+        if (rectF.top > 0 && isCheckTopAndBottom) {
+            deltaY = -rectF.top;
+        }
+
+        if (rectF.bottom < height && isCheckTopAndBottom) {
+            deltaY = height - rectF.bottom;
+        }
+
+        if (rectF.left > 0 && isCheckLeftAndRight) {
+            deltaX = -rectF.left;
+        }
+
+        if (rectF.right < width && isCheckLeftAndRight) {
+            deltaX = width - rectF.right;
+        }
+        mScaleMatrix.postTranslate(deltaX, deltaY);
+
+    }
+
+    private boolean isMoveAction(float dx, float dy) {
+        return Math.sqrt(dx * dx + dy * dy) > mTouchSlop;
+    }
+
+
+    private class AutoScaleRunnable implements Runnable {
+        //缩放的目标值
+        private float mTargetScale;
+        private float x;
+        private float y;
+
+        private final float LARGE = 1.07f;
+
+        private final float SMALL = 0.93f;
+
+        private float tmpScale;
+
+        public AutoScaleRunnable(float targetScale, float x, float y) {
+            mTargetScale = targetScale;
+            this.x = x;
+            this.y = y;
+            if (getScale() < mTargetScale) {
+                tmpScale = LARGE;
+            }
+           else if (getScale() > mTargetScale) {
+                tmpScale = SMALL;
+            }
+        }
+
+
+        @Override
+        public void run() {
+
+            mScaleMatrix.postScale(tmpScale, tmpScale, x, y);
+            checkBorderAndCenterWhenScale();
+            setImageMatrix(mScaleMatrix);
+
+            float current = getScale();
+            if ((tmpScale > 1.0f && current < mTargetScale) || (tmpScale < 1.0f && current > mTargetScale)) {
+                postDelayed(this, 16);
+            } else {
+                float scale = mTargetScale / current;
+                mScaleMatrix.postScale(scale, scale, x, y);
+                checkBorderAndCenterWhenScale();
+                setImageMatrix(mScaleMatrix);
+                isAutoScale = false;
+            }
+        }
     }
 
 }

@@ -35,7 +35,7 @@
          <!--android:layout_width="match_parent"-->
          <!--android:layout_height="match_parent" />-->
      <apiratehat.androidsamplecode.widget.ScaleImageView
-          android:src="@drawable/image"
+          android:src="@drawable/scale_image"
          android:layout_width="match_parent"
          android:layout_height="match_parent" />
 </LinearLayout>
