@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -105,13 +107,20 @@ public class CanvasViewTest extends View {
 //       canvas.drawRect(rectF,mPaint);
 
         //
-        canvas.translate(mWidth/2,mHeight/2);
-//
-        RectF rectF = new RectF(-400,-400,400,400);
-        for (int i = 0; i <= 20; i++) {
-            canvas.scale(0.9f,0.9f);
-            canvas.drawRect(rectF,mPaint);
-        }
+//        canvas.translate(mWidth/2,mHeight/2);
+////
+//        RectF rectF = new RectF(-400,-400,400,400);
+//        for (int i = 0; i <= 20; i++) {
+//            canvas.scale(0.9f,0.9f);
+//            canvas.drawRect(rectF,mPaint);
+//        }
+
+        // <----------------矩阵-------------------->
+        Matrix matrix = new Matrix();  //创建出来的是一个单位矩阵
+        //reset 设置为单位矩阵
+        //setValue  // getValue
+        //
+
 
 
 
