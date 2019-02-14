@@ -33,6 +33,7 @@ public class NewtonCradle extends View {
     private int mLineColor;
 
 
+
     private Paint mBallPaint;
     private Paint mLinePaint;
     private Paint mBasePaint;

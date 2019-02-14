@@ -4,6 +4,9 @@
 
     <string name="add">add</string>
     <string name="getbooks">getBooks</string>
+    <string name="get">get</string>
+    <string name="apply">apply</string>
+    <string name="commit">commit</string>
 
 
 </resources>

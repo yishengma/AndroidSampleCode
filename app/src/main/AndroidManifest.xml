@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
+            
         </activity>
         <activity android:name=".ipc.service.service.ServiceActivity" />
         <activity android:name=".ipc.client.client.clientActivity" />
@@ -18,6 +18,9 @@
         <service android:name=".ipc.service.service.BookService" />
 
         <activity android:name=".widget.CustomViewActivity">
+
+        </activity>
+        <activity android:name=".sp.SpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
