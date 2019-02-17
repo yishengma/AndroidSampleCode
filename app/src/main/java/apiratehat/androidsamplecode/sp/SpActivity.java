@@ -1,14 +1,17 @@
 package apiratehat.androidsamplecode.sp;
 
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+
 import android.util.Log;
+
 import android.view.View;
 
+
 import java.util.LinkedList;
-import java.util.prefs.Preferences;
+
 
 import apiratehat.androidsamplecode.R;
 
@@ -23,6 +26,7 @@ public class SpActivity extends AppCompatActivity {
 //                getSharedPreferences();
 //                getPreferences()
         //         PreferenceManager.getDefaultSharedPreferences()
+
 
         findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
             @Override
