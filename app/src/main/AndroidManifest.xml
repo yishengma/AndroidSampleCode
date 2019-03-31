@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="apiratehat.androidsamplecode">
+    package="apiratehat.androidsamplecode"
+
+
+    android:sharedUserId="share.ContentProvider" >  <!--设置sharedUserId,至少要有一个 . -->
+
+
+    <!--设置一个危险级别的权限-->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -9,25 +19,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".lifecycler.MainActivity">
+            <!--配置旋转屏幕不 重建 Activity -->
+            <!--android:configChanges="orientation|screenSize">-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ipc.service.service.ServiceActivity" />
         <activity android:name=".ipc.client.client.clientActivity" />
 
         <service android:name=".ipc.service.service.BookService" />
 
-        <activity android:name=".widget.CustomViewActivity">
-
+        <activity android:name=".widget.CustomViewActivity" />
+        <activity android:name=".sp.SpActivity" />
+        <activity android:name=".permission.PermissionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".sp.SpActivity">
 
-        </activity>
+        <!--使用 ShareUserId 的 ContentProvider -->
+        <provider
+            android:authorities="apiratehat.androidsamplecode"
+            android:name=".permission.ShareIdContentProvider"/>
     </application>
-
 </manifest>

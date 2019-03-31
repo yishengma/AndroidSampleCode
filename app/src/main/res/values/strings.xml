@@ -7,6 +7,8 @@
     <string name="get">get</string>
     <string name="apply">apply</string>
     <string name="commit">commit</string>
+    <string name="call">call</string>
+    <string name="read">read</string>
 
 
 </resources>
