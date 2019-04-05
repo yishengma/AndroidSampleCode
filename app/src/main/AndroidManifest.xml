@@ -38,7 +38,9 @@
         <activity android:name=".sp.SpActivity" />
         <activity
             android:name=".permission.PermissionActivity"
-            android:permission="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY"></activity>
+            android:permission="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY">
+
+        </activity>
 
         <!-- 使用 ShareUserId 的 ContentProvider -->
         <provider
@@ -46,13 +48,15 @@
             android:authorities="apiratehat.androidsamplecode" />
 
         <activity android:name=".exp.ExpActivity1">
+
+        </activity>
+        <activity android:name=".jni.JniActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".jni.JniActivity"></activity>
     </application>
 
 </manifest>

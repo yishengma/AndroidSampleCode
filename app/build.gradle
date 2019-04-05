@@ -5,7 +5,7 @@ android {
         debug {
             keyAlias 'shareId'
             keyPassword '123456'
-            storeFile file('G:/Android Projects/AndroidSampleCode/shareId.jks')
+            storeFile file('G:/AndroidProjects/AndroidSampleCode/shareId.jks')
             storePassword '123456'
         }
     }
@@ -17,6 +17,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+
+            moduleName "ndkdemotest-jni"
+            abiFilters  'armeabi-v7a'
+
+
+        }
     }
     buildTypes {
         release {
@@ -25,6 +32,15 @@ android {
         }
         debug {
             signingConfig signingConfigs.debug
+        }
+        externalNativeBuild {
+            ndkBuild {
+                path 'src/main/jni/Android.mk'
+            }
+        }
+        sourceSets.main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
 }
