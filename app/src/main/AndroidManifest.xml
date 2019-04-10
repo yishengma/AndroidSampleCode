@@ -11,6 +11,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!-- Open GL | ES -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
+    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
+
     <!-- 自定义的权限 -->
     <permission
         android:name="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY"
@@ -49,15 +57,18 @@
             android:authorities="apiratehat.androidsamplecode" />
 
         <activity android:name=".exp.ExpActivity1" />
-        <!--JNI DEMO -->
+        <!-- JNI DEMO -->
         <activity android:name=".jni.JniActivity" />
 
-        <!--音视频 初级入门 -->
+        <!-- 音视频 初级入门 -->
         <activity android:name=".audioAndVideo.junior.drawBitmap.BitmapActivity" />
-        <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity">
+        <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity" />
+        <activity android:name=".audioAndVideo.junior.camera.CameraActivity"/>
+        <activity android:name=".audioAndVideo.junior.MediaExtractorAndMediaMuxer.ExtractorAndMuxerActivity" />
+        <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity">
 
         </activity>
-        <activity android:name=".audioAndVideo.junior.camera.CameraActivity">
+        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
