@@ -17,12 +17,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 使用 Android.mk 的配置
+//        sourceSets.main {
+//            jni.srcDirs = []
+//            jniLibs.srcDirs = ['src/main/jniLibs']
+//        }
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
         ndk {
-
-            moduleName "ndkdemotest-jni"
-            abiFilters 'armeabi-v7a'
-
-
+            abiFilters  'armeabi-v7a'
         }
     }
     buildTypes {
@@ -33,14 +39,22 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
-        externalNativeBuild {
-            ndkBuild {
-                path 'src/main/jni/Android.mk'
-            }
-        }
-        sourceSets.main {
-            jni.srcDirs = []
-            jniLibs.srcDirs = ['src/main/jniLibs']
+
+        // 使用 Android.mk 的配置
+//        externalNativeBuild {
+//            ndkBuild {
+//                path 'src/main/jni/Android.mk'
+//            }
+//        }
+//        sourceSets.main {
+//            jni.srcDirs = []
+//            jniLibs.srcDirs = ['src/main/jniLibs']
+//        }
+
+    }
+    externalNativeBuild {
+        cmake {
+            path 'CMakeLists.txt'
         }
     }
 }

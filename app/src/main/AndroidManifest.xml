@@ -63,12 +63,13 @@
         <!-- 音视频 初级入门 -->
         <activity android:name=".audioAndVideo.junior.drawBitmap.BitmapActivity" />
         <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity" />
-        <activity android:name=".audioAndVideo.junior.camera.CameraActivity"/>
+        <activity android:name=".audioAndVideo.junior.camera.CameraActivity" />
         <activity android:name=".audioAndVideo.junior.MediaExtractorAndMediaMuxer.ExtractorAndMuxerActivity" />
-        <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity">
+        <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity"/>
+        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity">
 
         </activity>
-        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity">
+        <activity android:name=".audioAndVideo.middle.OpenSl.OpenSlActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,8 +6,10 @@ package apiratehat.androidsamplecode.jni;
  */
 
 public class NDKTools {
+
+
     static {
-        System.loadLibrary("ndkdemotest-jni");
+        System.loadLibrary("opensl");
     }
 
 

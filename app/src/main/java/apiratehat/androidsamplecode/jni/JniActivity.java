@@ -22,6 +22,7 @@ public class JniActivity extends AppCompatActivity {
 
 // 在NDKTools.java 目录下 键入  javac -h . NDKTools.java   注意中间有个 . 前后都有空格，其不能包含注释
 
+
 // javac -h -classpath  apiratehat.androidsamplecode.jni.NDKTools.java
 //《jdk10》删除javah.exe文件，在Android studio编译jni，使用jdk10生成头文件
 //只要一输入"javah -jni..."的命令就会一直提示
