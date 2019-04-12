@@ -72,6 +72,7 @@ JNIEXPORT void JNICALL
 Java_apiratehat_androidsamplecode_audioAndVideo_middle_OpenSl_OpenSlActivity_playAudioByOpenSL_assets(JNIEnv *env, jobject instance, jobject assetManager, jstring filename) {
 
     release();
+
     const char *utf8 = env->GetStringUTFChars(filename, NULL);
 
     // use asset manager to open asset by filename

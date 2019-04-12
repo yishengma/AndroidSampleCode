@@ -28,6 +28,7 @@ public class OpenSlActivity extends AppCompatActivity {
                 String directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath();
                 Log.e(TAG, "onClick: "+directory+"/mydream.pcm");
                 playAudioByOpenSL_pcm(directory + "/mydream.pcm");
+
             }
         });
     }

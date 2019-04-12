@@ -22,13 +22,14 @@ android {
 //            jni.srcDirs = []
 //            jniLibs.srcDirs = ['src/main/jniLibs']
 //        }
+
         externalNativeBuild {
             cmake {
                 cppFlags ""
             }
         }
         ndk {
-            abiFilters  'armeabi-v7a'
+            abiFilters 'armeabi-v7a'
         }
     }
     buildTypes {
@@ -39,7 +40,10 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
-
+        sourceSets.main {
+            jni.srcDirs = ['src/main/cpp']
+            jniLibs.srcDirs = []
+        }
         // 使用 Android.mk 的配置
 //        externalNativeBuild {
 //            ndkBuild {
@@ -63,6 +67,19 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+     //在 2018 年后都是 使用  'implementation' and 'api' 不用 compile
+    //IjkPlayer   Java 的 和  armv7a 版本
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+    // Other ABIs: optional 其他版本的 API
+//    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
+//    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
+    // ExoPlayer as IMediaPlayer: optional, experimental
+    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.8'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="apiratehat.androidsamplecode"
-    android:sharedUserId="share.ContentProvider"> <!-- 设置sharedUserId,至少要有一个 . -->
-
-
+    android:sharedUserId="share.ContentProvider">
+    <!-- 设置sharedUserId,至少要有一个 . -->
     <!-- 设置一个危险级别的权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Open GL | ES -->
 
-    <!-- Open GL | ES -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
 
     <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
-    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
-
-    <!-- 自定义的权限 -->
+    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" /> <!-- 自定义的权限 -->
     <permission
         android:name="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY"
         android:description="@string/apply"
@@ -34,6 +33,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".lifecycler.MainActivity">
 
             <!-- 配置旋转屏幕不 重建 Activity -->
@@ -49,27 +49,25 @@
         <activity android:name=".sp.SpActivity" />
         <activity
             android:name=".permission.PermissionActivity"
-            android:permission="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY" />
-
-        <!-- 使用 ShareUserId 的 ContentProvider -->
+            android:permission="apiratehat.androidsamplecode.permission.DEADLY_ACTIVITY" /> <!-- 使用 ShareUserId 的 ContentProvider -->
         <provider
             android:name=".permission.ShareIdContentProvider"
             android:authorities="apiratehat.androidsamplecode" />
 
-        <activity android:name=".exp.ExpActivity1" />
-        <!-- JNI DEMO -->
-        <activity android:name=".jni.JniActivity" />
-
-        <!-- 音视频 初级入门 -->
+        <activity android:name=".exp.ExpActivity1" /> <!-- JNI DEMO -->
+        <activity android:name=".jni.JniActivity" /> <!-- 音视频 初级入门 -->
         <activity android:name=".audioAndVideo.junior.drawBitmap.BitmapActivity" />
         <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity" />
         <activity android:name=".audioAndVideo.junior.camera.CameraActivity" />
         <activity android:name=".audioAndVideo.junior.MediaExtractorAndMediaMuxer.ExtractorAndMuxerActivity" />
-        <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity"/>
-        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity">
+        <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity" />
+        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity"/>
+        <service android:name=".audioAndVideo.senior.ijkplay.widget.MediaPlayerService" />
+
+        <activity android:name=".audioAndVideo.middle.OpenSl.OpenSlActivity">
 
         </activity>
-        <activity android:name=".audioAndVideo.middle.OpenSl.OpenSlActivity">
+        <activity android:name=".audioAndVideo.senior.ijkplay.IjkPlayerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
