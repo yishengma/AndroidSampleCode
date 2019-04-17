@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".exp.InputActivity">
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:textSize="25sp"
+        android:textColor="@color/colorTrans"
+        android:text="@string/input_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/username"
+        android:textColor="@color/colorTrans"
+        android:textColorHint="@color/colorTrans" />
+
+    <EditText
+        android:id="@+id/et_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="50dp"
+        android:hint="@string/password"
+        android:textColor="@color/colorTrans"
+        android:textColorHint="@color/colorTrans" />
+
+</RelativeLayout>

@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="protect_transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorTransGrey</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <declare-styleable name="CustomViewTest">
         <attr name="default_size" format="dimension"/>
 

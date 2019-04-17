@@ -468,3 +468,4 @@ Java_apiratehat_androidsamplecode_audioAndVideo_middle_OpenSl_OpenSlActivity_sen
 
     env->ReleaseByteArrayElements(data_, data, 0);
 }
+

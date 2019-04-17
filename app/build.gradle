@@ -28,6 +28,7 @@ android {
                 cppFlags ""
             }
         }
+        //armv7a，armv5，arm64，x86，x86_64 这些是对应的CPU架构，
         ndk {
             abiFilters 'armeabi-v7a'
         }
@@ -67,7 +68,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-     //在 2018 年后都是 使用  'implementation' and 'api' 不用 compile
+    //在 2018 年后都是 使用  'implementation' and 'api' 不用 compile
     //IjkPlayer   Java 的 和  armv7a 版本
     implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'

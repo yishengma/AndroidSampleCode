@@ -10,6 +10,7 @@ public class FileMediaDataSource implements IMediaDataSource {
     private RandomAccessFile mFile;
     private long mFileSize;
 
+
     public FileMediaDataSource(File file) throws IOException {
         mFile = new RandomAccessFile(file, "r");
         mFileSize = mFile.length();

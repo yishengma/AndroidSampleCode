@@ -2,6 +2,7 @@ package apiratehat.androidsamplecode.jni;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import apiratehat.androidsamplecode.R;
@@ -13,6 +14,7 @@ public class JniActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jni);
+        
         ((TextView)findViewById(R.id.tv_text)).setText(NDKTools.getStringFromNDK());
 
 

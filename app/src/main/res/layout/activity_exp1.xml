@@ -17,31 +17,56 @@
         android:textSize="18sp" />
 
     <EditText
+        android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="200dp"
-        android:hint="用户名" />
+        android:layout_marginEnd="50dp"
+        android:hint="@string/username" />
 
     <EditText
+        android:id="@+id/et_psw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="250dp"
-        android:hint="密码" />
+        android:layout_marginEnd="50dp"
+        android:hint="@string/password" />
 
 
     <Button
-        android:layout_marginTop="350dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="登录"
-        android:textSize="18sp"
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTrans" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/colorTrans"
+        android:text="@string/login"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_classmate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/colorTrans"
+        android:text="@string/classmate"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btn_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/colorTrans"
+        android:text="@string/introduce"
+        android:textSize="18sp" />
 </RelativeLayout>

@@ -8,4 +8,9 @@
     <color name="colorBlack">#000000</color>
 
     <color name="colorTrans">#ccf1eeee</color>
+
+    <color name="colorTransGrey">#A9090808</color>
+
+    <color name="colorWhite">#FCF9F9</color>
+
 </resources>

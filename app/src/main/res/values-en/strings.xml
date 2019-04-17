@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidSampleCode</string>
 
@@ -13,12 +14,14 @@
     <string name="stop">stop</string>
     <string name="record">record</string>
 
-
     <!---->
 
-    <string name="login">登录</string>
-    <string name="password">密码</string>
-    <string name="username">用户名</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="input_tip">Please input name/password !</string>
+    <string name="classmate">ClassMate Contract</string>
+    <string name="introduce">School Introduce</string>
 
     <!--1-->
     <!--ijkPlayer 的String  START -->
@@ -88,10 +91,6 @@
     <string name="VideoView_player_AndroidMediaPlayer">Player: AndroidMediaPlayer</string>
     <string name="VideoView_player_IjkMediaPlayer">Player: IjkMediaPlayer</string>
     <string name="VideoView_player_IjkExoMediaPlayer">Player: IjkExoMediaPlayer</string>
-    <string name="input_tip">请输入用户名/密码</string>
-    <string name="classmate">同学录</string>
-    <string name="introduce">学校简介</string>
-
 
     <!--ijkPlayer 的String   END -->
 </resources>

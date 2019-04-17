@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="apiratehat.androidsamplecode"
     android:sharedUserId="share.ContentProvider">
     <!-- 设置sharedUserId,至少要有一个 . -->
@@ -9,7 +10,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Open GL | ES -->
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -32,8 +32,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".exp.IntroduceActivity"></activity>
+        <activity android:name=".exp.ClassMateActivity" />
+        <activity
+            android:name=".exp.InputActivity"
+            android:theme="@style/protect_transparent" />
         <activity android:name=".lifecycler.MainActivity">
 
             <!-- 配置旋转屏幕不 重建 Activity -->
@@ -54,26 +59,25 @@
             android:name=".permission.ShareIdContentProvider"
             android:authorities="apiratehat.androidsamplecode" />
 
-        <activity android:name=".exp.ExpActivity1" /> <!-- JNI DEMO -->
+        <activity android:name=".exp.ExpActivity1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- JNI DEMO -->
         <activity android:name=".jni.JniActivity" /> <!-- 音视频 初级入门 -->
         <activity android:name=".audioAndVideo.junior.drawBitmap.BitmapActivity" />
         <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity" />
         <activity android:name=".audioAndVideo.junior.camera.CameraActivity" />
         <activity android:name=".audioAndVideo.junior.MediaExtractorAndMediaMuxer.ExtractorAndMuxerActivity" />
         <activity android:name=".audioAndVideo.middle.OpenGl.OpenGLESActivity" />
-        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity"/>
+        <activity android:name=".audioAndVideo.middle.OpenGl.TextureActivity" />
+
         <service android:name=".audioAndVideo.senior.ijkplay.widget.MediaPlayerService" />
 
-        <activity android:name=".audioAndVideo.middle.OpenSl.OpenSlActivity">
-
-        </activity>
-        <activity android:name=".audioAndVideo.senior.ijkplay.IjkPlayerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".audioAndVideo.middle.OpenSl.OpenSlActivity" />
+        <activity android:name=".audioAndVideo.senior.ijkplay.IjkPlayerActivity" />
     </application>
 
 </manifest>
