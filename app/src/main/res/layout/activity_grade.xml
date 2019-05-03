@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/guangzhou"
+    >
+    <LinearLayout
+        android:id="@+id/user_psw_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_ll"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/user_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cz_shade_ll">
+            <EditText
+                android:id="@+id/et_class"
+                style="@style/editStyle"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/userHint_tv"
+                android:ems="10" />
+            <TextView
+                android:id="@+id/userHint_tv"
+                style="@style/textStyle"
+                android:layout_centerVertical="true"
+                android:text="班级:" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/nickname_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/cz_shade_ll">
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/editStyle"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/passwordHint_tv"
+                android:ems="10" />
+            <TextView
+                android:id="@+id/passwordHint_tv"
+                style="@style/textStyle"
+                android:text="姓名:" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="39dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cz_shade_button"
+            android:onClick="login"
+            android:text="查询"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="38dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/cz_shade_button"
+            android:onClick="register"
+            android:text="登记"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/scale_image"
+    android:orientation="vertical"
+    tools:context=".exp.ecp3.ClientActivity">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:textSize="25sp" />
+
+    <EditText
+        android:hint="请输入 a"
+        android:inputType="number"
+        android:id="@+id/et_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="请输入 b"
+        android:id="@+id/et_b"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_remote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="远程调用" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_client"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本地调用" />
+
+</LinearLayout>

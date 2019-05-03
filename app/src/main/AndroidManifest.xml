@@ -34,7 +34,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".exp.IntroduceActivity"></activity>
+        <activity android:name=".exp.homework.Grade.DetailActivity">
+
+        </activity>
+        <activity android:name=".exp.homework.Grade.GradeActivity" >
+
+        </activity>
+        <activity android:name=".exp.homework.FrameActivity">
+
+        </activity>
+        <activity android:name=".exp.homework.VideoActivity" />
+        <activity android:name=".exp.homework.WeatherActivity" />
+        <activity android:name=".exp.ecp3.CheckDataActivity" />
+
+        <provider
+            android:name=".exp.ecp3.PersonProvider"
+            android:authorities="apiratehat.androidsamplecode" />
+
+        <service
+            android:name=".exp.ecp3.MusicService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".exp.ecp3.MusicActivity" />
+
+        <service android:name=".exp.ecp3.CompareService">
+            <intent-filter>
+                <action android:name="apiratehat.androidsamplecode.exp.CompareService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".exp.ecp3.ClientActivity" />
+        <activity android:name=".exp.ExpActivity3" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".exp.ListActivity" />
+        <activity android:name=".exp.IntroduceActivity" />
         <activity android:name=".exp.ClassMateActivity" />
         <activity
             android:name=".exp.InputActivity"
@@ -59,13 +100,7 @@
             android:name=".permission.ShareIdContentProvider"
             android:authorities="apiratehat.androidsamplecode" />
 
-        <activity android:name=".exp.ExpActivity1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- JNI DEMO -->
+        <activity android:name=".exp.ExpActivity1" /> <!-- JNI DEMO -->
         <activity android:name=".jni.JniActivity" /> <!-- 音视频 初级入门 -->
         <activity android:name=".audioAndVideo.junior.drawBitmap.BitmapActivity" />
         <activity android:name=".audioAndVideo.junior.audioRecord.AudioActivity" />
